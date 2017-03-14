@@ -1,0 +1,141 @@
+.ca_mask{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.45);
+	display: table;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+body {
+	background-image:url('img.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	right: 0px;
+	margin: 0px;
+	direction: rtl;
+}
+
+html {
+
+}
+
+.ca_middle_wrapper {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.ca_popup_wrapper{
+	width:600px;
+	padding: 10px;
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.56);
+	-moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.56);
+	box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.56);
+	display: inline-block;
+	background: #fff;
+}
+
+.x_popup_wrapper {
+	direction: ltr;
+	text-align: left;
+	height: auto;
+	position: relative;
+}
+
+.x_popup {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-image:url('x.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.inner_display {
+	display: table-cell;
+}
+
+.popup_input_wrapper.is-in .lable_input {
+    top: 2px;
+    font-size: 11px;
+}
+
+.lable_input {
+    color: #818181;
+    font-size: 13px;
+    position: absolute;
+    top: 22px;
+    right: 7px;
+    display: block;
+    -webkit-transition: .3s ease all;
+    transition: .3s ease all;
+    cursor: auto;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.popup_title {
+	font-weight: bold;
+	font-size: 40px;
+	margin-bottom: 16px;
+}
+
+.popup_content_wrapper {
+	text-align: center;
+	padding: 0px 15%;
+}
+
+.popup_sub_title {
+	font-size: 14px;
+	line-height: 30px;
+	margin-bottom: 0px;
+}
+
+.popup_input_wrapper {
+	position: relative;
+	padding-top: 20px;
+	margin-bottom: 10px;
+}
+
+.input_content{
+	display: block;
+	width: 100%;
+	padding: 3px 5px 10px 5px;
+	direction: rtl;
+	border: 0px;
+	border-bottom: 1px solid gray;
+}
+
+.popup_click{
+	border: 0px;
+	background-color: red;
+	color: #fff;
+	font-weight: bold;
+	padding: 8px 0px;
+	display: block;
+	width: 100%;
+	margin-top: 41px;
+	-webkit-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.55);
+	-moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.55);
+	box-shadow: 0px 7px 18px -1px rgba(0,0,0,0.55);
+	font-size: 16px;
+	margin-bottom: 25px;
+}
+
+.forgot_password {
+	text-decoration: underline;
+}
