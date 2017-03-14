@@ -1,3 +1,9 @@
+var update = {
+	title: 'עדכן סיסמא',
+	sub_title: 'הכנס את סיסמתך הישנה ואת הסהמא החדשה, אחר כך לחץ על כפתור ה"עדכן"',
+	inputs: [{name: 'curent_password', label: 'סיסמא נוכחית (6 עד 8 תווים)'},{name: 'curent_password', label: 'סיסמא חדשה (6 עד 8 תווים)'}]
+}
+
 $(document).on('focus','input.input_content', function() {
 	$(this).parent().addClass('is-in');
 })
