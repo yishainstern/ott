@@ -1,8 +1,31 @@
+
+
+$(document).on('focus','input.input_content', function() {
+	$(this).parent().addClass('is-in');
+})
+
+/*$(document).on('change','input.input_content', function() {
+	str = $(this).val();
+	if 
+})*/
+
+$(document).on('blur','input.input_content', function() {
+	str = $(this).val(); 
+	if (str.length<1){
+		$(this).parent().removeClass('is-in');	
+	} 
+})
+
 var details = {
-		//email: 'yishai@gmail.com',
-		firstName : 'ישי'
+		current_password: '1234'
+		
 }
 
+var input_length;
+var myVar;
+var arr;
+var form_name;
+var data_to_send;
 var update = {
 	title: 'עדכן סיסמא',
 	form_name:'update_password_form',
@@ -36,7 +59,7 @@ var choose = {
 	title: 'בחר סיסמא חדשה',
 	form_name:'new_password_form',
 	sub_title: 'תכניס את הקוד שקיבלת באימייל ותוסיף את הקוד החדש שלך',
-	inputs: [{name: 'code', label: 'הקוד שקיבלת',type: 'text'},{name: 'new_password', label: 'סיסמא חדשה',type: 'password'}],
+	inputs: [{name: 'current_password', label: 'הקוד שקיבלת',type: 'password'},{name: 'new_password', label: 'סיסמא חדשה',type: 'password'}],
 	button:{id:'choose_password',value:'שנה סיסמא'},
 	forgot:false	
 }
@@ -116,7 +139,7 @@ function form_bulid(obj,details){
 	}else{
 		form_name = 'form_name';
 	}
-	str = '<form name="'+form_name+'" id="'+form_name+'">';
+	str = '<form class="popup_form" name="'+form_name+'" id="'+form_name+'">';
 	str = str + inputs(obj.inputs,details);
 	str = str +'</form>';
 	return str;
@@ -142,6 +165,34 @@ function button_bulid(obj,details){
 	return '<input type="button" class="popup_click" value="'+value+'" id="'+id+'"/>'+forgot;
 }
 
+function update_is_in(){
+	form = document.forms.namedItem(form_name);
+	data_to_send = new FormData(form);
+	arr = $('.input_content');
+	for (i=0;i<arr.length;i++){
+		str = $(arr[i]).attr('name');
+		str = data_to_send.get(str);
+		console.log(str+'dsd');
+			$(arr[i]).focus();
+			$(arr[i]).blur();
+		if (str || str.length >0){
+			$(arr[i]).parent().addClass('is-in');
+
+		}
+	}
+}
+
+function check_yellow(){
+	tmp = $('.input_content');
+	if(tmp.length==input_length){
+		clearTimeout(myVar);
+		update_is_in();	
+	}else{
+		//come back agin//page was not fully updated
+	}
+	
+}
+
 function create_popup(obj,details){
 	str = start_popup();
 	str = str+ popup_content(obj,details);
@@ -149,26 +200,14 @@ function create_popup(obj,details){
 	str = str + end_popup();
 	console.log(str);
 	$('body').html(str);
+	input_length = obj.inputs.length;
+	form_name = obj.form_name;
+	//console.log($('.input_content'));
+	myVar = setTimeout(check_yellow, 500);
+	
 }
 
-//create_popup(choose,details);
+create_popup(choose,details);
 //create_popup(user,details);
 //create_popup(reset,details);
 //create_popup(update,details);
-
-
-$(document).on('focus','input.input_content', function() {
-	$(this).parent().addClass('is-in');
-})
-
-/*$(document).on('change','input.input_content', function() {
-	str = $(this).val();
-	if 
-})*/
-
-$(document).on('blur','input.input_content', function() {
-	str = $(this).val(); 
-	if (str.length<1){
-		$(this).parent().removeClass('is-in');	
-	} 
-})
