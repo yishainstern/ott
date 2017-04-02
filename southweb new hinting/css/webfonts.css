@@ -1,0 +1,62 @@
+/************************/
+/*						*/
+/*	(c)	michal sahar	*/
+/*		south web		*/
+/*						*/
+/************************/
+
+
+@font-face {
+	font-family: 'south web';
+	src: url('../fonts/south-extrabold-webfont.eot');
+	src: url('../fonts/south-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/south-extrabold-webfont.woff') format('woff'),
+		 url('../fonts/south-extrabold-webfont.ttf') format('truetype'),
+		 url('../fonts/south-extrabold-webfont.svg#southextrabold') format('svg');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'south web';
+	src: url('../fonts/south-bold-webfont.eot');
+	src: url('../fonts/south-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/south-bold-webfont.woff') format('woff'),
+		 url('../fonts/south-bold-webfont.ttf') format('truetype'),
+		 url('../fonts/south-bold-webfont.svg#southbold') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'south web';
+	src: url('../fonts/south-regular-webfont.eot');
+	src: url('../fonts/south-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/south-regular-webfont.woff') format('woff'),
+		 url('../fonts/south-regular-webfont.ttf') format('truetype'),
+		 url('../fonts/south-regular-webfont.svg#southregular') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'south web';
+	src: url('../fonts/south-light-webfont.eot');
+	src: url('../fonts/south-light-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/south-light-webfont.woff') format('woff'),
+		 url('../fonts/south-light-webfont.ttf') format('truetype'),
+		 url('../fonts/south-light-webfont.svg#southlight') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'south web ultralight';
+	src: url('../fonts/south-ultralight-webfont.eot');
+	src: url('../fonts/south-ultralight-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/south-ultralight-webfont.woff') format('woff'),
+		 url('../fonts/south-ultralight-webfont.ttf') format('truetype'),
+		 url('../fonts/south-ultralight-webfont.svg#southultralight') format('svg');
+	font-weight: 200;
+	font-style: normal;
+}
