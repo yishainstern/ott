@@ -5,7 +5,9 @@ var input_length; var myVar; var arr; var form_name; var data_to_send; var popup
 function close_pop_up(){$('.ca_mask').remove();}
 function success_update_password(data){
 	console.log(data);
-	create_popup(reset,popup_details);
+	//create_popup(reset,popup_details);
+	close_pop_up();
+	popup_callback(popup_args);
 }
 var update = {
 	action: 'update_password',
@@ -115,19 +117,8 @@ function update_is_in(){
 		if (str || str.length >0){ $(arr[i]).parent().addClass('is-in'); } 
 	}
 }
-function check_yellow(){
-	tmp = $('.input_content');
-	if(tmp.length==input_length){ clearTimeout(myVar); update_is_in();	
-	}else{ /*nothing*/}
-}
-function create_popup(obj,details){
-	str = start_popup(); str = str+ popup_content(obj,details); str = str + button_bulid(obj,details); str = str + end_popup();
-	$('.ca_mask').remove(); $('body').append(str);
-	input_length = obj.inputs.length;
-	form_name = obj.form_name;
-	myVar = setTimeout(check_yellow, 500);
-}
-
+function check_yellow(){ tmp = $('.input_content'); if(tmp.length==input_length){ clearTimeout(myVar); update_is_in(); }else{ /*nothing*/} }
+function create_popup(obj,details){ str = start_popup(); str = str+ popup_content(obj,details); str = str + button_bulid(obj,details); str = str + end_popup(); $('.ca_mask').remove(); $('body').append(str); input_length = obj.inputs.length; form_name = obj.form_name; myVar = setTimeout(check_yellow, 500); }
 function pop_alert(name){
 	str = $('input[name="'+name+'"]').val(); sib = $('input[name="'+name+'"]').siblings('.pop_up_error');
 	if (str==""&&sib.length>0){ $('input[name="'+name+'"]').siblings('.pop_up_error').show(); return true; }
@@ -138,9 +129,7 @@ function return_json(){
 	if (arr_form.length > 0){
 		var my_form = arr_form[0]; formData = new FormData(my_form); obj = {};
 		for(var pair of formData.entries()) {							
-			if (pop_alert(pair[0])){ flag = true; }
-   			obj[pair[0]] = pair[1];
-		}
+			if (pop_alert(pair[0])){ flag = true; } obj[pair[0]] = pair[1];}
 		if (flag){ return false; }else{ return obj;	}
 	}else {return null; }
 }
@@ -148,7 +137,7 @@ $('html').on('change','input.input_content',function(event){
 	if ($(this).val()==""){ $(this).siblings(".pop_up_error").show();
 	}else { $(this).siblings(".pop_up_error").hide();}		
 });
-$('html').on('click','.x_popup',function(){close_pop_up()});
+$('html').on('click','.x_popup',function(){close_pop_up();popup_callback(popup_args)});
 function caller(action,obj){
 	console.log(obj);
 	$.ajax({
