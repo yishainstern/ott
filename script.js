@@ -29,7 +29,7 @@ var reset = {
 	title: 'אפס סיסמא',
 	form_name:'reset_password_form',
 	sub_title: 'רק תוודא שהמייל שלך הוא המעודכן ותלחץ על שלח.... אנחנו נשלח למייל שלך סיסמא חדשה לאיפוס',
-	inputs: [{name: 'email', label: 'שם משתמש',type: 'text',err:'שדה האימייל חייב להיות מלא'}],
+	inputs: [{name: 'email', label: 'שם משתמש',type: 'text',err:'שדה האימייל חייב להיות מלא או בכתובת מייל תקינה'}],
 	button:{id:'reset_password',value:'אפס סיסמא'},
 	button_bottom:true,
 	button_bottom_text:'כבר קיבלתי מייל'
@@ -44,7 +44,7 @@ var user = {
 	title: 'עדכון פרטים',
 	form_name:'user_details_form',
 	sub_title: 'רק תוודא שהמייל שלך הוא המעודכן ותלחץ על שלח.... אנחנו נשלח למייל שלך סיסמא חדשה לאיפוס',
-	inputs: [{name: 'firstName', label: 'שם פרטי',type: 'text'},{name: 'lastName', label: 'שם משפחה',type: 'text'},{name: 'email', label: 'שם משתמש',type: 'text', err:"שדה מייל חייב להיות מלא"}],
+	inputs: [{name: 'firstName', label: 'שם פרטי',type: 'text'},{name: 'lastName', label: 'שם משפחה',type: 'text'},{name: 'email', label: 'שם משתמש',type: 'text', err:"שדה מייל חייב להיות מלא או בכתובת מייל תקינה"}],
 	button:{id:'update_details',value:'עדכן נתונים'},
 	forgot:false	
 }
@@ -120,17 +120,33 @@ function update_is_in(){
 function check_yellow(){ tmp = $('.input_content'); if(tmp.length==input_length){ clearTimeout(myVar); update_is_in(); }else{ /*nothing*/} }
 function create_popup(obj,details){ str = start_popup(); str = str+ popup_content(obj,details); str = str + button_bulid(obj,details); str = str + end_popup(); $('.ca_mask').remove(); $('body').append(str); input_length = obj.inputs.length; form_name = obj.form_name; myVar = setTimeout(check_yellow, 500); }
 function pop_alert(name){
-	str = $('input[name="'+name+'"]').val(); sib = $('input[name="'+name+'"]').siblings('.pop_up_error');
+	str = $('input[name="'+name+'"]').val(); 
+	sib = $('input[name="'+name+'"]').siblings('.pop_up_error');
 	if (str==""&&sib.length>0){ $('input[name="'+name+'"]').siblings('.pop_up_error').show(); return true; }
+	if (name=='email'){
+		var rejex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		regex_flag = rejex.test(str);
+		if (!regex_flag&&sib.length>0){ $('input[name="'+name+'"]').siblings('.pop_up_error').show(); return true; }
+	}
 	return false;
-}
+}//SDFSDF
 function return_json(){
 	flag = false; arr_form = $('.popup_form');
 	if (arr_form.length > 0){
-		var my_form = arr_form[0]; formData = new FormData(my_form); obj = {};
+		var my_form = arr_form[0]; 
+		formData = new FormData(my_form); 
+		obj = {};
 		for(var pair of formData.entries()) {							
-			if (pop_alert(pair[0])){ flag = true; } obj[pair[0]] = pair[1];}
-		if (flag){ return false; }else{ return obj;	}
+			if (pop_alert(pair[0])){ 
+				flag = true; 
+			} 
+			obj[pair[0]] = pair[1];
+		}
+		if (flag){ 
+			return false; 
+		}else{ 
+			return obj;	
+		}
 	}else {return null; }
 }
 $('html').on('change','input.input_content',function(event){
