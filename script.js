@@ -129,7 +129,7 @@ function pop_alert(name){
 		if (!regex_flag&&sib.length>0){ $('input[name="'+name+'"]').siblings('.pop_up_error').show(); return true; }
 	}
 	return false;
-}
+}//SDFSDF
 function return_json(){
 	flag = false; arr_form = $('.popup_form');
 	if (arr_form.length > 0){
