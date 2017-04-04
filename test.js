@@ -1,2 +1,2 @@
 alert('sd');
-var f = 6;
+var f = 5;
