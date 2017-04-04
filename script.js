@@ -126,6 +126,7 @@ function pop_alert(name){
 	if (name=='email'){
 		var rejex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		regex_flag = rejex.test(str);
+		if (!regex_flag&&sib.length>0){ $('input[name="'+name+'"]').siblings('.pop_up_error').show(); return true; }
 	}
 	return false;
 }
